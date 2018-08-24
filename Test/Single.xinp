@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<simulation>
+  <!-- General - geometry definitions !-->
+  <geometry dim="1" X0="0" X1="60" sets="true">
+    <refine type="uniform" patch="1" u="499"/>
+  </geometry>
+
+  <!-- General - boundary conditions !-->
+  <boundaryconditions>
+    <dirichlet set="Vertex2" comp="1"/>
+    <dirichlet set="Vertex1" comp="1" type="expression">S0=500.0; r=0.05; S0*exp(r*t)</dirichlet>
+  </boundaryconditions>
+
+  <!-- Problem-specific block !-->
+  <blackscholes r="0.05" sigma="0.3"/>
+
+  <timestepping type="bdf2" start="0" end="0.5" dt="0.01"/>
+
+</simulation>
